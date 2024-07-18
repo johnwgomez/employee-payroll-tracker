@@ -1,16 +1,17 @@
-// Get a reference to the #add-employees-btn element // Collect employee data Done*
+// Get a reference to the #add-employees-btn element 
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
-
+// Collect employee data Done***
 const collectEmployees = function () {
   const employees = [];
   let continueAdding = true;
-
+// Continues if prompt variables are true | Parse converts into number
   while (continueAdding) {
     const firstName = prompt("Enter the employee's first name:");
     const lastName = prompt("Enter the employee's last name:");
     let salary = parseFloat(prompt("Enter the employee's salary:"));
-    // Validation of salary input
+
+    // Validation of salary input ||isNAN checking only for valid number
     if (isNaN(salary)) {
       salary = 0;
     }
@@ -31,7 +32,7 @@ const collectEmployees = function () {
   return employees;
 }
 
-// Display the average salary   // TODO: Calculate and display the average salary DONE****
+// Display the average salary   // TODO: Calculate and display the average salary DONE***
 const displayAverageSalary = function (employeesArray) {
 
   // Checks if the array is empty
@@ -43,18 +44,20 @@ const displayAverageSalary = function (employeesArray) {
   //Calculate the average
   const averageSalary = totalSalary / employeesArray.length;
   // logs the average salaer in to console. Wanted fromat to display ip to 2 decimal points | USE ` instead of ' spent so much time on this
-  console.log(`Average Salary: $${averageSalary.toFixed(2)}`);
+  console.log(`The average employee salary between our ${employeesArray.length} employee(s) is $${averageSalary.toFixed(2)}`);
 };
 
-// Select a random employee |   // TODO: Select and display a random employee
+// Select a random employee |   // TODO: Select and display a random employee DONE***
 const getRandomEmployee = function (employeesArray) {
-if(employeesArray.length === 0) {
-  console.log("No employees Selected");
-  return;
-}
-const randomSelection = Math.floor(Math.random() * employeesArray.length);
-const randomEmployee = employeesArray [randomSelection];
-console.log(`random employee: ${randomEmployee.firstName} ${randomEmployee.lastName} ${randomEmployee.salary}`)
+  if (employeesArray.length === 0) {
+    console.log("No Employees Selected");
+    return;
+  }
+  // Researched how to random select Math.floor| Math.Random
+  const randomSelection = Math.floor(Math.random() * employeesArray.length);
+  const randomEmployee = employeesArray[randomSelection];
+  //created messaging after user logs into console
+  console.log(`Congratulations to ${randomEmployee.firstName} ${randomEmployee.lastName}, our random drawing winner!`);
 }
 
 /*
