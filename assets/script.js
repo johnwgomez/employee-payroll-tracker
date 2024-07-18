@@ -1,41 +1,50 @@
-// Get a reference to the #add-employees-btn element
+// Get a reference to the #add-employees-btn element // Collect employee data Done*
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
-// Collect employee data
+
 const collectEmployees = function () {
-  // TODO: Get user input to create and return an array of employee objects
-  const collectEmployees = [];
+  const employees = [];
   let continueAdding = true;
 
   while (continueAdding) {
-    const firstName = prompt("Employees first name")
-    const lastName = prompt("emmployee last name")
-    let salary = parseFloat(prompt("Employee salary"));
-    //Validation of salary input
+    const firstName = prompt("Enter the employee's first name:");
+    const lastName = prompt("Enter the employee's last name:");
+    let salary = parseFloat(prompt("Enter the employee's salary:"));
+    // Validation of salary input
     if (isNaN(salary)) {
       salary = 0;
     }
 
-    //creation of employee
+    // Creation of employee
     const employee = {
-      firstName: firstName
-      lastName: lastName
+      firstName: firstName,
+      lastName: lastName,
       salary: salary
     };
 
-    //add employee to array
+    // Add employee to array
     employees.push(employee);
 
-    //ask user to add another
-    continueAdding = confirm("would you like to add another employee?");
+    // Ask user to add another
+    continueAdding = confirm("Would you like to add another employee?");
   }
-  return employee;
+  return employees;
 }
 
-// Display the average salary
+// Display the average salary   // TODO: Calculate and display the average salary DONE****
 const displayAverageSalary = function (employeesArray) {
-  // TODO: Calculate and display the average salary
-}
+
+  // Checks if the array is empty
+  if (employeesArray.length === 0) {
+    console.log("No information to calculate average salary");
+  }
+  // Calculates total salary by sum of all employee salaries
+  const totalSalary = employeesArray.reduce((total, employee) => total + employee.salary, 0);
+  //Calculate the average
+  const averageSalary = totalSalary / employeesArray.length;
+  // logs the average salaer in to console. Wanted fromat to display ip to 2 decimal points | USE ` instead of ' spent so much time on this
+  console.log(`Average Salary: $${averageSalary.toFixed(2)}`);
+};
 
 // Select a random employee
 const getRandomEmployee = function (employeesArray) {
